@@ -14,6 +14,8 @@ npm install
 npm run dev
 ```
 
+![todoList](../vue-todos/img/todoList.png)
+
 vue3 + localStorage 的练习项目
 
 视频链接 <https://www.youtube.com/watch?v=KTFH4P8unUQ>
