@@ -1,9 +1,19 @@
 <template>
-  <div class="input-warp" :class="{ 'input-err': todoState.invalid }">
-    <input type="text" v-model="todoState.todo" @keyup.enter="createTodo" />
+  <div
+    class="input-warp"
+    :class="{ 'input-err': todoState.invalid }"
+  >
+    <input
+      type="text"
+      v-model="todoState.todo"
+      @keyup.enter="createTodo"
+    />
     <TodoButton @click="createTodo"> </TodoButton>
   </div>
-  <p v-if="todoState.invalid" class="err-msg">
+  <p
+    v-if="todoState.invalid"
+    class="err-msg"
+  >
     {{ todoState.errMsg }}
   </p>
 </template>
