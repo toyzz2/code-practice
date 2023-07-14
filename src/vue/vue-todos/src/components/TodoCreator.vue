@@ -1,38 +1,36 @@
 <template>
   <div class="input-warp" :class="{ 'input-err': todoState.invalid }">
-    <input type="text" v-model="todoState.todo" />
-    <TodoButton @click="createTodo" @keyup.enter.native="s"> </TodoButton>
+    <input type="text" v-model="todoState.todo" @keyup.enter="createTodo" />
+    <TodoButton @click="createTodo"> </TodoButton>
   </div>
-  <p v-if="todoState.invalid" class="err-msg">{{ todoState.errMsg }}</p>
+  <p v-if="todoState.invalid" class="err-msg">
+    {{ todoState.errMsg }}
+  </p>
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive } from "vue";
 
-import TodoButton from './TodoButton.vue'
+import TodoButton from "./TodoButton.vue";
 
-const emit = defineEmits(['create-todo'])
+const emit = defineEmits(["create-todo"]);
 const todoState = reactive({
-  todo: '',
+  todo: "",
   invalid: null,
-  errMsg: ''
-})
-
-const s = ()=>{
-  console.log(111);
-}
+  errMsg: "",
+});
 
 const createTodo = () => {
-  todoState.invalid = null
-  if (todoState.todo !== '') {
-    emit('create-todo', todoState.todo)
-    todoState.todo = ''
-    return
+  todoState.invalid = null;
+  if (todoState.todo !== "") {
+    emit("create-todo", todoState.todo);
+    todoState.todo = "";
+    return;
   }
 
-  todoState.invalid = true
-  todoState.errMsg = 'todo value cannot be empty'
-}
+  todoState.invalid = true;
+  todoState.errMsg = "todo value cannot be empty";
+};
 </script>
 )
 
@@ -41,6 +39,7 @@ const createTodo = () => {
   display: flex;
   transition: 250ms ease;
   border: 2px solid #41b080;
+
   &.input-err {
     border-color: red;
   }
